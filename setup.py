@@ -19,12 +19,10 @@ except ImportError:
 # required for installations from a source tarball because running
 # ``python setup.py sdist`` will re-add the prefix to the tarball's
 # ``setup.cfg``.
-cf = ConfigParser()
-
 with open('setup.cfg', 'r') as f:
     orig_setup_cfg = f.read()
-    f.seek(0)
-    cf.readfp(f, 'setup.cfg')
+cf = ConfigParser()
+cf.readfp(StringIO(orig_setup_cfg), 'setup.cfg')
 
 if os.environ.get('GRAPHITE_NO_PREFIX'):
     cf.remove_section('install')
