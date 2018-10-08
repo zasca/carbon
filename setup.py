@@ -9,6 +9,12 @@ try:
 except ImportError:
     from configparser import ConfigParser, DuplicateSectionError  # Python 3
 
+# io.StringIO is strictly unicode only. Python 2 StringIO.StringIO accepts
+# bytes, so we'll conveniently ignore decoding and reencoding the file there.
+try:
+    from StringIO import StringIO  # Python 2
+except ImportError:
+    from io import StringIO  # Python 3
 
 # Graphite historically has an install prefix set in setup.cfg. Being in a
 # configuration file, it's not easy to override it or unset it (for installing
