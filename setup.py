@@ -88,7 +88,7 @@ try:
         description='Backend data caching and persistence daemon for Graphite',
         long_description='Backend data caching and persistence daemon for Graphite',
         packages=['carbon', 'carbon.aggregator', 'twisted.plugins'],
-        package_dir={'' : 'libb'},
+        package_dir={'' : 'lib'},
         scripts=glob('bin/*'),
         package_data={ 'carbon' : ['*.xml'] },
         data_files=install_files,
